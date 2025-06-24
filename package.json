@@ -1,0 +1,42 @@
+{
+  "name": "fintrak",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron dist/main.js",
+    "build": "webpack --config webpack.renderer.config.js && webpack --config webpack.main.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luka-bur3k/FinTrak.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luka-bur3k/FinTrak/issues"
+  },
+  "homepage": "https://github.com/luka-bur3k/FinTrak#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "css-loader": "^7.1.2",
+    "electron": "^37.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
