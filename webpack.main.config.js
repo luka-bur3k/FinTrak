@@ -1,15 +1,9 @@
 // webpack.main.config.js
-import * as path from 'path';
-import webpack from 'webpack';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
+const path = require('path');
 
-dotenv.config();
+require('dotenv').config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export default {
+module.exports = {
   mode: JSON.stringify(process.env.FINTRAK_MODE),
   target: 'electron-main',
   entry: './src/main.ts',

@@ -1,22 +1,28 @@
 // src/main.ts
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
+import logger from './logger';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1000,
     height: 700,
     webPreferences: {
-      // preload: path.join(__dirname, 'preload.js'), // optional
       nodeIntegration: false,
       contextIsolation: true
     }
   });
 
-  // mainWindow.loadURL('http://localhost:3000'); // for dev server
-  // Or for production build:
-  console.log(`DIRNAME: ${__dirname}`)
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  logger.logi(`DIRNAME: ${__dirname}`);
+  logger.logi(`MODE: ${process.env.FINTRAK_MODE}`);
+  if (process.env.FINTRAK_MODE == "development") {
+    mainWindow.loadURL('http://localhost:3000'); // for dev server
+  } else if (process.env.FINTRAK_MODE == "production") {
+    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  }
   mainWindow.webContents.openDevTools();
 };
 

@@ -2,10 +2,12 @@
   "name": "fintrak",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "electron dist/main.js",
-    "build": "webpack --config webpack.renderer.config.js && webpack --config webpack.main.config.js"
+    "build:main": "webpack --config webpack.main.config.js --mode=production",
+    "build:renderer": "webpack --config webpack.renderer.config.js --mode=production",
+    "start:main": "electron dist/main.js",
+    "start:frontend": "webpack serve --config webpack.renderer.config.js --mode=development"
   },
   "repository": {
     "type": "git",
