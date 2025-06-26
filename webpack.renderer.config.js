@@ -1,8 +1,15 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import * as path from 'path';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
-module.exports = {
-  mode: 'development', // change to 'production' for prod builds
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
+  mode: JSON.stringify(process.env.FINTRAK_MODE),
   target: 'web', // Web for React
   entry: './src/renderer/index.tsx',
   output: {
@@ -30,7 +37,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env.FINTRAK_MODE': JSON.stringify(process.env.FINTRAK_MODE),
+    }),
   ],
   devServer: {
     port: 3000,
